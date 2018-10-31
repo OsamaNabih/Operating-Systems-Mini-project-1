@@ -30,9 +30,14 @@ def readInput():
     arrivals = np.random.normal(loc=mu1, scale=sigma1, size=process_num)
     bursts = np.random.normal(loc=mu2, scale=sigma2, size=process_num)
     priorities = np.random.poisson(lam=my_lambda, size=process_num)
-    arrivals = np.around(arrivals, 2)
-    bursts = np.around(bursts, 2)
-    priorities = np.around(priorities, 2)
+    mapped_priorities = np.arange(1, len(priorities) + 1)
+    sorted_priorities = np.argsort(priorities)
+    for i in range(process_num):
+        priorities[sorted_priorities[i]] = mapped_priorities[i]
+    arrivals = np.round(arrivals, 2)
+    bursts = np.round(bursts, 2)
+    arrivals = np.abs(arrivals)
+    bursts = np.abs(bursts)
     f = open("Output.txt", "w")
     f.write(str(process_num) + "\n")
     for i in range(process_num):
