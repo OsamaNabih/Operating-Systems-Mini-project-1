@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Process #1 wait time = 0.02 TAT = 8.15 weighted TAT = 1.0
 Process #7 wait time = 7.58 TAT = 16.28 weighted TAT = 1.87
 Process #5 wait time = 13.54 TAT = 15.34 weighted TAT = 8.52
@@ -11,3 +12,17 @@ Process #3 wait time = 69.49 TAT = 84.8 weighted TAT = 5.54
 
 average TAT = 43.94
 weightedAverageTAT = 4.02
+=======
+Process #1 wait time = 0.0 TAT = 10.0 weighted TAT = 1.0 started at: 0.0 ended at: 10.0
+Process #4 wait time = 8.1 TAT = 11.1 weighted TAT = 3.7 started at: 10.0 ended at: 13.0
+Process #7 wait time = 10.2 TAT = 12.2 weighted TAT = 6.1 started at: 13.0 ended at: 15.0
+Process #8 wait time = 10.3 TAT = 11.3 weighted TAT = 11.3 started at: 15.0 ended at: 16.0
+Process #2 wait time = 6.3 TAT = 12.3 weighted TAT = 2.05 started at: 16.0 ended at: 22.0
+Process #5 wait time = 9.3 TAT = 11.3 weighted TAT = 5.65 started at: 22.0 ended at: 24.0
+Process #9 wait time = 8.3 TAT = 9.3 weighted TAT = 9.3 started at: 24.0 ended at: 25.0
+Process #3 wait time = 3.3 TAT = 6.3 weighted TAT = 2.1 started at: 25.0 ended at: 28.0
+Process #6 wait time = 4.3 TAT = 6.3 weighted TAT = 3.15 started at: 28.0 ended at: 30.0
+
+average TAT = 10.01
+weightedAverageTAT = 4.93
+>>>>>>> 79bc35701ba6d375d3779d252cc9fabe4f4bd29a
