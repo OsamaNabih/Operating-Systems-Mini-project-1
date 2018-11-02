@@ -25,6 +25,7 @@ def simulate():
     algo = options.get()
     options.grid_forget()
     data = scheduler(enum[algo])
+    graph(root, data)
     options.grid(row=5, column=7)
 '''
 topFrame = Frame(root)
@@ -48,6 +49,5 @@ theLabel2 = Label(root, text="Choose scheduling algorithm", bg='cyan')
 theLabel2.grid(row=4, column=7)
 options.grid(row=5, column=7)
 schedule.grid(row=6, column=7)
-graph(root)
 root.mainloop()
 

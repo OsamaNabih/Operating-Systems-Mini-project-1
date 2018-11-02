@@ -42,7 +42,8 @@ def readInput(file_name):
 
 
 
-def graph(root):
+def graph(root, data):
+    '''
     time = np.arange(0, 500)
     time = time * 0.1
     process = np.ones(100)
@@ -55,7 +56,8 @@ def graph(root):
     process = np.append(process, temp)
     temp = temp / 4
     process = np.append(process, temp)
-
+    '''
+    time, process = data
     f = Figure(figsize=(5, 5), dpi=100)
     a = f.add_subplot(111)
     a.plot(time, process)
@@ -68,6 +70,4 @@ def graph(root):
     toolbar.update()
     canvas._tkcanvas.pack()
     plt.interactive(False)
-    #plt.show(block=True)
     plt.plot(time, process)
-    #plt.show()

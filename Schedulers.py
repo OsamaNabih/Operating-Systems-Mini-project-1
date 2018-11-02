@@ -29,4 +29,4 @@ def scheduler(algo):
         data = SRTNscheduler(processArray)
     else:
         print("Invalid algorithm")
-
+    return data
