@@ -4,7 +4,7 @@ from heapq import heappush, heappop
 
 precision = 2
 
-def HPFscheduler(processArray):
+def HPFscheduler(processArray, switch_time):
     ## Sort the Process on the time of arrival
     processArray = sorted(processArray, key=lambda process: float(process.arrivalTime))
     printProcessList(processArray)
@@ -18,7 +18,7 @@ def HPFscheduler(processArray):
     busy = False
     exit = False
     terminated = Queue()
-    switchTime = 0.25
+    context_switch = switch_time
     data_t = []
     data_p = []
     PN = 0
@@ -45,8 +45,8 @@ def HPFscheduler(processArray):
         elif heap[0].arrivalTime <= time:
             busy = True
             curr_process = heappop(heap)
-            curr_process.startTime = time
-            curr_process.endTime = curr_process.startTime + curr_process.burstTime + switchTime
+            curr_process.startTime = time + context_switch
+            curr_process.endTime = curr_process.startTime + curr_process.burstTime
             endTime = curr_process.endTime
             PN = curr_process.processNumber
         data_p.append(PN)

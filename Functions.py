@@ -43,31 +43,23 @@ def readInput(file_name):
 
 
 def graph(root, data):
-    '''
-    time = np.arange(0, 500)
-    time = time * 0.1
-    process = np.ones(100)
-    temp = np.ones(100)
-    temp = temp * 2
-    process = np.append(process, temp)
-    temp = temp * 3 / 2
-    process = np.append(process, temp)
-    temp = temp * 4 / 3
-    process = np.append(process, temp)
-    temp = temp / 4
-    process = np.append(process, temp)
-    '''
     time, process = data
+    time.append(0)
+    process.append(0)
     f = Figure(figsize=(5, 5), dpi=100)
     a = f.add_subplot(111)
     a.plot(time, process)
     frame = Frame()
-    frame.grid(row=7, column=4)
+    frame.grid(row=15, column=4)
     canvas = FigureCanvasTkAgg(f, master=frame)
     canvas.draw()
     canvas.get_tk_widget().pack(expand=True, fill=BOTH)
     toolbar = NavigationToolbar2Tk(canvas, frame)
     toolbar.update()
     canvas._tkcanvas.pack()
+    plt.interactive(False)
+    plt.plot(time, process)
+    time = 0.0
+    process = 0.0
     plt.interactive(False)
     plt.plot(time, process)
