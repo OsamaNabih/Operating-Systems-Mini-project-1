@@ -35,8 +35,9 @@ def simulate():
         switch_time = float(switch_time)
     else:
         messagebox.showerror("Error", "You must specify context switching time!")
-    data = scheduler(enum[algo], switch_time, quantum)
+    data, f = scheduler(enum[algo], switch_time, quantum)
     graph(root, data)
+    writeGlobalStats(data, f)
     options.grid(row=15, column=7)
 
 '''

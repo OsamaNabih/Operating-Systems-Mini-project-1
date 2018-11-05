@@ -18,13 +18,13 @@ def scheduler(algo, switch_time, quantum):
         processArray.append(temp)
     inputFile.close()
     if algo == 0:
-        data = HPFscheduler(processArray, switch_time)
+        data, f = HPFscheduler(processArray, switch_time)
     elif algo == 1:
-        data = FCFSscheduler(processArray, switch_time)
+        data, f = FCFSscheduler(processArray, switch_time)
     elif algo == 2:
-        data = RRscheduler(processArray, quantum)
+        data, f = RRscheduler(processArray, switch_time, quantum)
     elif algo == 3:
-        data = SRTNscheduler(processArray)
+        data, f = SRTNscheduler(processArray)
     else:
         print("Invalid algorithm")
-    return data
+    return (data, f)

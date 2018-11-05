@@ -1,3 +1,9 @@
+import matplotlib
+matplotlib.use("TkAgg")
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
+from matplotlib.figure import Figure
+import matplotlib.pyplot as plt
+from tkinter import *
 import numpy as np
 precision = 2
 
@@ -31,32 +37,37 @@ class Queue:
         for item in self.items:
             item.printProcess()
 
-    def calculateStats(self, outputFile):
-        averageTAT = 0
-        weightedAverageTAT = 0
-        f = open(outputFile, 'w')
-        for item in self.items:
-            item.writeStats(f)
-            averageTAT += item.TAT()
-            weightedAverageTAT += item.weightedTAT()
-        averageTAT /= self.size()
-        weightedAverageTAT /= self.size()
-        f.write("\naverage TAT = " + str(np.round(averageTAT, 2)) + "\nweightedAverageTAT = " \
-                + str(np.round(weightedAverageTAT, 2)))
-        f.close()
-
 class Process:
     def __init__(self, processNumber, arrivalTime, burstTime, priority):
         self.processNumber = processNumber
         self.arrivalTime = arrivalTime
         self.burstTime = burstTime
         self.priority = priority
+        self.timeLeft = burstTime
+        self.transitions = []
 
     def __lt__(self, other):
         if self.priority == other.priority:
             return self.processNumber < other.processNumber
         return self.priority > other.priority
 
+    def getTransitions(self):
+        for i in range(len(self.transitions)):
+            print("Transition # " + str(i) + " from " + str(self.transitions[i][0]) + " to " + str(
+                self.transitions[i][1]) + "\n")
+        return
+
+    def setTransitions(self, start, end):
+        self.transitions.append((start, end))
+        return
+
+    def setTimeLeft(self, quantum):
+        self.timeLeft -= quantum
+        np.round(self.timeLeft, precision)
+        return
+
+    def getTimeLeft(self):
+        return np.round(self.timeLeft, precision)
 
     def endTime(self, endTime):
         self.endTime = endTime
@@ -84,6 +95,7 @@ class Process:
                 " TAT = " + str(self.TAT()) + " weighted TAT = " + str(self.weightedTAT()) + " arrived at: " + \
                 str(self.arrivalTime) + " started at: " + str(np.round(self.startTime, precision)) + " ended at: " \
                 + str(np.round(self.endTime, precision)) + '\n')
+
 
 
 def printProcessList(processArray):
