@@ -1,0 +1,5 @@
+Process #2 wait time = 0.4 TAT = 15.4 weighted TAT = 1.03 arrived at: 5.0 started at: 5.4 ended at: 20.4
+Process #1 wait time = 0.2 TAT = 44.6 weighted TAT = 1.49 arrived at: 1.0 started at: 1.2 ended at: 45.6
+
+average TAT = 30.0
+weightedAverageTAT = 1.26

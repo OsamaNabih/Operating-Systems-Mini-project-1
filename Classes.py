@@ -5,6 +5,7 @@ from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
 from tkinter import *
 import numpy as np
+import heapq as hq
 precision = 2
 
 class Queue:
@@ -37,6 +38,31 @@ class Queue:
         for item in self.items:
             item.printProcess()
 
+class MyHeap(object):
+    def __init__(self,initial=None, key=lambda x:x):
+        self.key = key
+        if initial:
+            self._data = [(key(item), item) for item in initial]
+            hq.heapify(self._data)
+        else:
+            self._data = []
+
+    def push(self, item):
+        hq.heappush(self._data, (self.key(item), item))
+        
+    def pop(self):
+        return hq.heappop(self._data)[1]
+    def top(self):
+        return self._data[0][1]
+    def heapPushPop(self,item):
+        hq.heappush(self._data,(self.key(item), item))
+        return hq.heappop(self._data)[1]
+    def size(self):
+        return len(self._data)		
+			
+def getTimeLeft(process):
+    return np.round(process.timeLeft, precision)	
+	
 class Process:
     def __init__(self, processNumber, arrivalTime, burstTime, priority):
         self.processNumber = processNumber
@@ -78,10 +104,17 @@ class Process:
         return
 
     def waitTime(self):
-        return np.round((self.startTime - self.arrivalTime), precision)
-
+        if(self.transitions == 0):
+            return np.round((self.startTime - self.arrivalTime), precision)
+        else:
+            self.startTime = self.transitions[0][0] ## first element in the first tuple is the startTime\n",
+            return np.round((self.startTime - self.arrivalTime), precision)
     def TAT(self):
-        return np.round((self.endTime - self.arrivalTime), precision)
+        if(self.transitions ==0):
+            return np.round((self.endTime - self.arrivalTime), precision)
+        else:
+            self.endTime = self.transitions[-1][1] ## second element in the last tuple is the endTime\n",
+            return np.round((self.endTime - self.arrivalTime),precision)
 
     def weightedTAT(self):
         return np.round((self.endTime - self.arrivalTime) / self.burstTime, precision)

@@ -6,8 +6,6 @@ precision = 2
 
 def HPFscheduler(processArray, switch_time):
     ## Sort the Process on the time of arrival
-    processArray = sorted(processArray, key=lambda process: float(process.arrivalTime))
-    printProcessList(processArray)
     process_num = len(processArray)
     processQ = Queue()
     for process in processArray:

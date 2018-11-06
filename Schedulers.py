@@ -17,6 +17,7 @@ def scheduler(algo, switch_time, quantum):
         temp = Process(int(line[0]), float(line[1]), float(line[2]), int(line[3]))
         processArray.append(temp)
     inputFile.close()
+    processArray = sorted(processArray, key=lambda process: float(process.arrivalTime))
     if algo == 0:
         data, f = HPFscheduler(processArray, switch_time)
     elif algo == 1:
@@ -24,7 +25,7 @@ def scheduler(algo, switch_time, quantum):
     elif algo == 2:
         data, f = RRscheduler(processArray, switch_time, quantum)
     elif algo == 3:
-        data, f = SRTNscheduler(processArray)
+        data, f = SRTNscheduler(processArray, switch_time)
     else:
         print("Invalid algorithm")
     return (data, f)
