@@ -10,7 +10,7 @@ def RRscheduler(processArray, switchTime, quantum):
 	size = len(processArray)
 	currentProcess = None
 	quantumTime = quantum
-	cpuCycle = 1
+	cpuCycle = 0.1
 	switchingTime = switchTime
 	while(True):
 		if(exit or (len(processArray) == 0 and len(terminated) == size)): ## will be changd 

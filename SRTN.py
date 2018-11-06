@@ -9,7 +9,7 @@ def SRTNscheduler(processArray, switchTime):
 	time = 0.0 
 	size = len(processArray)
 	currentProcess = None
-	cpuCycle = 1
+	cpuCycle = 0.1
 	switchingTime = switchTime
 	while(True):
 		

@@ -104,13 +104,13 @@ class Process:
         return
 
     def waitTime(self):
-        if(self.transitions == 0):
+        if(len(self.transitions) == 0):
             return np.round((self.startTime - self.arrivalTime), precision)
         else:
             self.startTime = self.transitions[0][0] ## first element in the first tuple is the startTime\n",
             return np.round((self.startTime - self.arrivalTime), precision)
     def TAT(self):
-        if(self.transitions ==0):
+        if(len(self.transitions) ==0):
             return np.round((self.endTime - self.arrivalTime), precision)
         else:
             self.endTime = self.transitions[-1][1] ## second element in the last tuple is the endTime\n",

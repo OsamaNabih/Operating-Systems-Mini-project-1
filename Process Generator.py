@@ -49,7 +49,7 @@ bottomFrame.pack(side=BOTTOM)
 
 enum = {'HPF': 0, 'FCFS': 1, 'RR': 2, 'SRTN': 3}
 schedule_algos = ['HPF', 'FCFS', 'RR', 'SRTN']
-options = Combobox(root, values=schedule_algos)
+options = Combobox(root, values=schedule_algos, state="readonly")
 options.set("HPF")
 file_label = Label(root, text="Input File Name:")
 switch_label = Label(root, text="Choose context switching time")

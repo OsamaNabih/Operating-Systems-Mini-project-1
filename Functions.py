@@ -71,6 +71,9 @@ def graph(root, data):
              label="Process " + str(process.processNumber))
         i += 1
     a.legend(loc='upper right', prop={'size': 6})
+    a.set_xlabel('Time', fontsize=12)
+    a.set_ylabel('Process', fontsize=12)
+    a.set_title('Process Schedule', fontsize=18)
     return
 
 
