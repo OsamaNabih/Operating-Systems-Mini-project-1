@@ -15,7 +15,7 @@ def RRscheduler(processArray, switchTime, quantum):
 	while(True):
 		if(exit or (len(processArray) == 0 and len(terminated) == size)): ## will be changd 
 			break
-		if(len(processArray) > 0):
+		while(len(processArray) > 0):
 			if(time >= float(processArray[0].arrivalTime)):
 				queue.enqueue(processArray[0])
 				del processArray[0]

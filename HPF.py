@@ -21,7 +21,7 @@ def HPFscheduler(processArray, switch_time):
         time = np.round(time + 0.1, precision)
         if (exit or (len(terminated) == process_num)):
             break
-        if not processQ.isEmpty():
+        while not processQ.isEmpty():
             if (processQ.front().arrivalTime <= time):
                 heappush(heap, processQ.dequeue())
         if busy:
