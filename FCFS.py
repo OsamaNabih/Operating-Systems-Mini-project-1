@@ -19,8 +19,7 @@ def FCFSscheduler(processArray, switch_time):
         time = np.round(time + 0.1, precision)
         if (exit or (len(terminated) == len(processArray))):
             break
-        while not processQ.isEmpty():
-            if (processQ.front().arrivalTime <= time):
+        while (not processQ.isEmpty() and processQ.front().arrivalTime <= time):
                 q.enqueue(processQ.dequeue())
         if busy:
             if time < endTime:
